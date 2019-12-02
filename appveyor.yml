@@ -92,6 +92,7 @@ build_script:
   - IF NOT EXIST lua_install-%LUAV%\bin\luacov.bat ( luarocks install cluacov 1> NUL 2> NUL )
 
 test_script:
+  - call install.bat /?
   - busted -o gtest -v --lpath=.//?.lua --exclude-tags=ssh,unix,%EXCLUDE% -Xhelper lua_dir=%CD%\lua_install-%LUAV%,appveyor,%COMPILER% %FILES%
 
 after_test:
